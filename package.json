@@ -1,12 +1,13 @@
 {
   "name": "bar-o-matic-9000",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "index.js",
+    "serve": "node index.js",
+    "clean": "rm -rf .cache && rm -rf /public",
     "dev": "parcel src/index.html --out-dir public",
-    "build": ""
+    "build": "npm run clean && npm run dev && npm run serve"
   },
   "author": "Jesse Hazel",
   "private": true,
