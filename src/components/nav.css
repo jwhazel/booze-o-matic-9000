@@ -1,0 +1,30 @@
+.nav {
+  min-height: 10vh;
+  text-align: center;
+}
+
+#randomize {
+  border: 3px solid #333;
+  color: #333;
+  padding: 8px 18px;
+  font-size: 1.5em;
+  cursor: pointer;
+  border-radius: 3px;
+  outline: none;
+}
+
+#randomize.working {
+  cursor: initial;
+  color: #aaa;
+  animation: pulse-blue 0.5s infinite;
+  animation-direction: alternate;
+}
+
+@keyframes pulse-blue {
+  0% {
+    border-color: #333;
+  }
+  100% {
+    border-color: #b71c1c;
+  }
+}

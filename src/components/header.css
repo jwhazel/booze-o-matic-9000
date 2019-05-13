@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css?family=Black+Ops+One");
+
+.header {
+  min-height: 20vh;
+  font-size: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.gradient {
+  background: #36d1dc;
+  background: -webkit-linear-gradient(to right, #5b86e5, #36d1dc);
+  background: linear-gradient(to right, #5b86e5, #36d1dc);
+}
+
+h1 {
+  font-family: "Black Ops One";
+  margin: 0;
+  text-transform: uppercase;
+}
+
+h2 {
+  color: #333;
+  font-size: 0.5em;
+  font-weight: 400;
+  margin: 0;
+}

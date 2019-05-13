@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,800");
+
+body {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+}
+
+section {
+  overflow: hidden;
+}
+
+a,
+a.visited {
+  text-decoration: none;
+  color: initial;
+  border-bottom: 1px dotted;
+}
+
+.data-container {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: row;
+  max-width: 1180px;
+  margin: 0 auto;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.data-container.dice-rolled {
+  opacity: 1;
+}
+
+.col1,
+.col2 {
+  width: 50%;
+  position: relative;
+}
+
+.col2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
