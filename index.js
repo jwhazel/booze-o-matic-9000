@@ -1,5 +1,6 @@
 const express = require("express");
 const yelp = require("./lib/yelp");
+var cors = require('cors')
 const version = require("./package.json").version;
 
 //Load our config file and parse possible locations into an array
@@ -8,6 +9,7 @@ process.env.LOCATIONS = process.env.LOCATIONS.split("|").map(n => n.trim());
 
 //Setup express and use the public directory
 const app = express();
+app.use(cors())
 app.use(express.static("public"));
 
 //The initial endpoint that bootstraps our app
@@ -20,7 +22,7 @@ app.get("/api/init", async function(req, res) {
       data: {
         mapToken: process.env.GOOGLE_TOKEN,
         maxResults: await yelp(location).getMaxResults(),
-        version: version
+        version: version,
       }
     };
   } catch (err) {

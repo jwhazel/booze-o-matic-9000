@@ -10,6 +10,10 @@
     "build": "npm run clean && npm run dev && npm run serve"
   },
   "author": "Jesse Hazel",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jwhazel/bar-o-matic-9000"
+  },
   "private": true,
   "license": "ISC",
   "dependencies": {
