@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Header from "./components/header/header";
 import Nav from "./components/nav/nav";
+import BarList from "./components/bar-list/bar-list";
 import Results from "./components/results/results";
 import Footer from "./components/footer/footer";
 import "./main.css";
@@ -10,68 +11,33 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      init: { maxResults: null, version: "" },
-      location: "Louisville, KY",
-      data: {categories:[], address:[]},
-      working: true
+      barList: [],
+      currentBar: {}
     };
 
-    this.initData = this.initData.bind(this);
-    this.randomData = this.randomData.bind(this);
-    this.listData = this.listData.bind(this);
-
-    this.initData();
+    this.getData();
   }
-  initData() {
-    fetch(`http://localhost:3000/api/init?location=${this.state.location}`)
+  getData() {
+    fetch("http://localhost:3000/api/get-data")
       .then(res => res.json())
       .then(data => {
-        this.setState({ init: data.data, working: false });
+        this.setState({ barList: data });
       })
       .catch(err => {
         console.log(err);
       });
   }
-  randomData() {
-    this.setState({ working: true });
-    fetch(
-      `http://localhost:3000/api/random?max=${
-        this.state.init.maxResults
-      }&location=${this.state.location}`
-    )
-      .then(res => res.json())
-      .then(data => {
-        this.setState({ data: data.data, working: false });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+  setRandom() {
+    var setLength = this.state.barList.length;
+    var randomIndex = Math.floor(Math.random() * setLength);
+    this.setState({ currentBar: this.state.barList[randomIndex] });
   }
-  listData(){
 
-  }
   render() {
     return (
       <main>
         <Header />
-        <Nav buttonState={this.state.working} clickFunction={this.randomData} />
-        <section
-          className="data-container"
-          className={this.state.data.name ? "dice-rolled" : ""}
-        >
-          <div className="col1" />
-          <div
-            className="col2"
-            style={{
-              backgroundImage: `url(${this.state.data.image_url})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center"
-            }}
-          >
-            <Results data={this.state.data} />
-          </div>
-        </section>
-        <Footer data={this.state.init} />
+        <BarList bars={this.state.barList}/>
       </main>
     );
   }

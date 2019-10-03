@@ -8,3 +8,4 @@ config.json
 .cache/
 public/
 node_modules/
+data/*
